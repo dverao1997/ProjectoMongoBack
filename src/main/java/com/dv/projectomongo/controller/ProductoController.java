@@ -12,24 +12,24 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/producto")
-@CrossOrigin("*")
+@CrossOrigin(origins = "*")
+@RequestMapping("/api/products")
 public class ProductoController {
     @Autowired
     ProductoService productoService;
 
 
-    @GetMapping("/li")
+    @GetMapping("/")
     public ResponseEntity<List<Producto>> getProdcutos(){
         return new ResponseEntity<>(productoService.findByAll(), HttpStatus.OK);
     }
 
-    @PostMapping("/cr")
+    @PostMapping("/product")
     public ResponseEntity<Producto> setProdcuto(@RequestBody Producto p){
         return new ResponseEntity<>(productoService.save(p),HttpStatus.CREATED);
     }
 
-    @PutMapping("/up/{id}")
+    @PutMapping("/product/{id}")
     public ResponseEntity<Producto> updateProducto(@PathVariable String id,@RequestBody Producto p){
         Producto pr=productoService.findById(id);
         if(pr==null){
@@ -46,7 +46,7 @@ public class ProductoController {
         }
     }
 
-    @DeleteMapping("/dl/{id}")
+    @DeleteMapping("/product/{id}")
     public ResponseEntity<Producto> deleteProducto(@PathVariable String id){
         productoService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
