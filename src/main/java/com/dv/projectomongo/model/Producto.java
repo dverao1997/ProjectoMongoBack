@@ -7,14 +7,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDate;
 
 @Data
-@Document(collection = "producto")
+@Document(collection = "products")
 public class Producto {
     @Id
     private String _id;
 
-    private String nombre;
+    private String name;
 
-    private Double precio;
+    private Double price;
 
-    private LocalDate fecha_caducidad;
+    private LocalDate expiry_date;
 }

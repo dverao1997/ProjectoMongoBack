@@ -36,9 +36,9 @@ public class ProductoController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }else{
             try{
-                pr.setNombre(p.getNombre());
-                pr.setPrecio(p.getPrecio());
-                pr.setFecha_caducidad(p.getFecha_caducidad());
+                pr.setName(p.getName());
+                pr.setPrice(p.getPrice());
+                pr.setExpiry_date(p.getExpiry_date());
                 return new ResponseEntity<>(productoService.save(p),HttpStatus.OK);
             }catch (DataAccessException e){
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
